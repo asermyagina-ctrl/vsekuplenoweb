@@ -3,9 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Всё куплено</title>
-  <meta name="description" content="Сервис «Всё куплено» — быстрые закупки и запросы цен через Telegram и MAX.">
+  <title>Всё куплено — умный ассистент закупок в HoReCa</title>
+  <meta name="description" content="«Всё куплено» — сравнивает прайсы поставщиков, считает заказы и проводит онлайн-аукционы прямо в Telegram и MAX.">
   <link rel="icon" href="data:,">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -13,15 +16,21 @@
   <!-- ==================== ШАПКА ==================== -->
   <header class="site-header">
     <div class="container header-inner">
-      <a href="#top" class="logo">Всё куплено</a>
+      <a href="#top" class="logo">
+        <span class="logo-badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        ВСЕ КУПЛЕНО
+      </a>
       <nav class="header-nav">
         <a href="#how">Как это работает</a>
-        <a href="#pricing">Тарифы</a>
-        <a href="#faq">Вопросы</a>
+        <a href="#prices">Тарифы</a>
+        <a href="instruction.html">Инструкция пользователя</a>
+        <a href="#footer">Контакты</a>
       </nav>
       <div class="header-cta">
-        <a href="#" class="btn btn-telegram" data-role="telegram-link" target="_blank" rel="noopener">Открыть в Telegram</a>
-        <a href="#" class="btn btn-max" data-role="max-link" target="_blank" rel="noopener">Открыть в MAX</a>
+        <a href="#" class="btn btn-primary" data-role="telegram-link" target="_blank" rel="noopener">Открыть бот в Telegram</a>
+        <a href="#" class="btn btn-outline" data-role="max-link" target="_blank" rel="noopener">Открыть бот в MAX</a>
       </div>
     </div>
   </header>
@@ -29,11 +38,60 @@
   <!-- ==================== HERO ==================== -->
   <section id="top" class="hero">
     <div class="container hero-inner">
-      <h1>[ЗАМЕНИТЬ: главный заголовок — что делает сервис]</h1>
-      <p class="hero-sub">[ЗАМЕНИТЬ: подзаголовок / короткое описание выгоды]</p>
+      <p class="eyebrow">ВСЕ КУПЛЕНО</p>
+      <h1>Умный ассистент закупок<br>в HoReCa</h1>
+      <p class="hero-sub">
+        Закупайте быстрее.<br>
+        Сравнивайте прайсы за минуты.<br>
+        Проводите аукционы прямо в Telegram.
+      </p>
       <div class="hero-actions">
-        <a href="#" class="btn btn-primary btn-lg" data-role="telegram-link" target="_blank" rel="noopener">Открыть бота в Telegram</a>
-        <a href="#" class="btn btn-secondary btn-lg" data-role="max-link" target="_blank" rel="noopener">Открыть бота в MAX</a>
+        <a href="#" class="btn btn-primary btn-lg" data-role="telegram-link" target="_blank" rel="noopener">Попробовать 30 дней бесплатно</a>
+        <a href="#" class="btn btn-outline btn-lg" data-role="max-link" target="_blank" rel="noopener">Открыть бот в MAX</a>
+      </div>
+      <p class="hero-note">Бесплатно, без подписки, без данных карты</p>
+    </div>
+  </section>
+
+  <!-- ==================== ЗНАКОМАЯ КАРТИНА ==================== -->
+  <section class="problem">
+    <div class="container">
+      <h2>Знакомая картина?</h2>
+      <p class="problem-text">
+        Несколько поставщиков с похожим ассортиментом, прайсы в разных форматах — легко упустить лучшее предложение.<br>
+        Еженедельное сравнение цен на овощи и фрукты, биржевые позиции — рутина, которая отнимает время.<br>
+        <strong>Вам больше не надо сравнивать цены вручную.</strong><br>
+        «Всё куплено» делает эту работу за вас и за минуты показывает, где выгоднее купить.
+      </p>
+    </div>
+  </section>
+
+  <!-- ==================== ВОЗМОЖНОСТИ ==================== -->
+  <section class="features">
+    <div class="container">
+      <h2>Забудьте о хаосе в закупках</h2>
+      <div class="features-grid">
+        <div class="feature">
+          <div class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><circle cx="8" cy="8" r="2.5" stroke="#fff" stroke-width="1.8"/><circle cx="16" cy="16" r="2.5" stroke="#fff" stroke-width="1.8"/><path d="M6 18L18 6" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Прозрачные цены поставщиков</h3>
+          <p>Автоматически сравниваем прайс-листы, отслеживаем повышения цен и находим лучшие условия. Тысячи позиций за пару минут.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M4 12a8 8 0 0113.66-5.66M20 12a8 8 0 01-13.66 5.66M4 5v4h4M20 19v-4h-4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Минимум рутины и ошибок</h3>
+          <p>Заявки формируются в пару кликов. Никаких потерянных сообщений в мессенджерах и путаницы в накладных.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><rect x="5" y="3" width="14" height="18" rx="2" stroke="#fff" stroke-width="1.8"/><path d="M9 8h6M9 12h6M9 16h3" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Онлайн запросы цен (аукционы)</h3>
+          <p>Запустите онлайн-аукцион за пару минут. Поставщикам не нужна регистрация, весь процесс организован максимально понятно и удобно для вас и ваших поставщиков.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -41,22 +99,19 @@
   <!-- ==================== КАК ЭТО РАБОТАЕТ ==================== -->
   <section id="how" class="how-it-works">
     <div class="container">
-      <h2>Как это работает</h2>
+      <h2>Всё устроено так, чтобы вам не пришлось менять привычки</h2>
       <div class="steps">
         <div class="step">
-          <div class="step-num">1</div>
-          <h3>[ЗАМЕНИТЬ: шаг 1]</h3>
-          <p>[ЗАМЕНИТЬ: описание шага 1]</p>
+          <h3>Отправляете прайс в Telegram</h3>
+          <p>Присылаете боту прайс-лист так, как получили его от поставщика — Excel или PDF, в любом виде. Готовить файл заранее не нужно: бот сам разберётся, где название товара, а где цена.</p>
         </div>
         <div class="step">
-          <div class="step-num">2</div>
-          <h3>[ЗАМЕНИТЬ: шаг 2]</h3>
-          <p>[ЗАМЕНИТЬ: описание шага 2]</p>
+          <h3>Бот находит разницу</h3>
+          <p>Как только в системе оказывается второй прайс с пересекающимся ассортиментом, приходит отчёт: какие товары есть у обоих поставщиков и у кого дешевле. Без единого запроса с вашей стороны.</p>
         </div>
         <div class="step">
-          <div class="step-num">3</div>
-          <h3>[ЗАМЕНИТЬ: шаг 3]</h3>
-          <p>[ЗАМЕНИТЬ: описание шага 3]</p>
+          <h3>Спросили — получили ответ</h3>
+          <p>Написали простыми словами: «сколько стоят сливки 33%» — бот присылает цены всех поставщиков сразу, от дешёвого к дорогому, честно посчитанные к одной единице измерения, даже если фасовка разная.</p>
         </div>
       </div>
     </div>
@@ -82,86 +137,73 @@
     </div>
   </section>
 
+  <!-- ==================== БЕЗОПАСНОСТЬ ==================== -->
+  <section class="safety">
+    <div class="container">
+      <h2>А что насчет безопасности данных?</h2>
+      <p>
+        Прайсы поставщиков — это то, что не показывают даже соседям по рынку, и мы относимся к этому серьёзно.<br>
+        Ваши данные видите только вы.<br>
+        Ни поставщики, ни другие пользователи не имеют доступ к этой информации.
+      </p>
+    </div>
+  </section>
+
   <!-- ==================== ТАРИФЫ ==================== -->
-  <section id="pricing" class="pricing">
+  <section id="prices" class="pricing">
     <div class="container">
       <h2>Тарифы</h2>
-      <p class="pricing-sub">Оплатить можно прямо на сайте — картой через ЮKassa или по счету. Также оплата доступна внутри ботов.</p>
-      <div class="pricing-grid">
-
-        <div class="price-card" data-plan="start">
-          <h3 class="plan-name">[Тариф 1]</h3>
-          <div class="plan-price">[цена] ₽<span>/[период]</span></div>
-          <ul class="plan-features">
-            <li>[ЗАМЕНИТЬ: что входит]</li>
-            <li>[ЗАМЕНИТЬ: что входит]</li>
-            <li>[ЗАМЕНИТЬ: что входит]</li>
-          </ul>
-          <div class="plan-actions">
-            <button class="btn btn-primary" data-action="pay-yookassa" data-plan="start">Оплатить картой</button>
-            <button class="btn btn-outline" data-action="pay-invoice" data-plan="start">Оплатить по счету</button>
-          </div>
-        </div>
-
-        <div class="price-card price-card-featured" data-plan="standard">
-          <div class="plan-badge">Популярный</div>
-          <h3 class="plan-name">[Тариф 2]</h3>
-          <div class="plan-price">[цена] ₽<span>/[период]</span></div>
-          <ul class="plan-features">
-            <li>[ЗАМЕНИТЬ: что входит]</li>
-            <li>[ЗАМЕНИТЬ: что входит]</li>
-            <li>[ЗАМЕНИТЬ: что входит]</li>
-          </ul>
-          <div class="plan-actions">
-            <button class="btn btn-primary" data-action="pay-yookassa" data-plan="standard">Оплатить картой</button>
-            <button class="btn btn-outline" data-action="pay-invoice" data-plan="standard">Оплатить по счету</button>
-          </div>
-        </div>
-
-        <div class="price-card" data-plan="pro">
-          <h3 class="plan-name">[Тариф 3]</h3>
-          <div class="plan-price">[цена] ₽<span>/[период]</span></div>
-          <ul class="plan-features">
-            <li>[ЗАМЕНИТЬ: что входит]</li>
-            <li>[ЗАМЕНИТЬ: что входит]</li>
-            <li>[ЗАМЕНИТЬ: что входит]</li>
-          </ul>
-          <div class="plan-actions">
-            <button class="btn btn-primary" data-action="pay-yookassa" data-plan="pro">Оплатить картой</button>
-            <button class="btn btn-outline" data-action="pay-invoice" data-plan="pro">Оплатить по счету</button>
-          </div>
-        </div>
-
+      <p class="pricing-sub">Первые 14 дней — бесплатно и без ограничений</p>
+      <div class="pricing-grid" id="pricing-grid">
+        <!-- Карточки тарифов генерируются из config.js (script.js) -->
       </div>
     </div>
   </section>
 
-  <!-- ==================== FAQ ==================== -->
-  <section id="faq" class="faq">
-    <div class="container">
-      <h2>Вопросы и ответы</h2>
-      <div class="faq-list">
-        <details>
-          <summary>[ЗАМЕНИТЬ: вопрос 1]</summary>
-          <p>[ЗАМЕНИТЬ: ответ 1]</p>
-        </details>
-        <details>
-          <summary>[ЗАМЕНИТЬ: вопрос 2]</summary>
-          <p>[ЗАМЕНИТЬ: ответ 2]</p>
-        </details>
-      </div>
+  <!-- ==================== О НАС ==================== -->
+  <section class="about">
+    <div class="container about-inner">
+      <h2>Как появился «Все куплено»</h2>
+      <p>
+        Мы создали сервис для себя, воплотив 15 лет опыта работы в HoReCa.
+        Сервис, которым сами хотели пользоваться.
+        Все устали от ручного сравнения прайсов, неудобных площадок, разных форматов и единиц измерения.
+        «Все куплено» — инструмент, который реально экономит время. Без сложных внедрений, без обучения. Интуитивно.
+      </p>
     </div>
   </section>
 
   <!-- ==================== ФУТЕР ==================== -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">Всё куплено</div>
-      <div class="footer-links">
-        <a href="#" data-role="telegram-link" target="_blank" rel="noopener">Telegram-бот</a>
-        <a href="#" data-role="max-link" target="_blank" rel="noopener">MAX-бот</a>
+  <footer id="footer" class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">Все куплено — умный помощник для закупок в HoReCa</div>
       </div>
-      <div class="footer-legal">[ЗАМЕНИТЬ: контакты / реквизиты / ИНН при необходимости]</div>
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Реквизиты</h4>
+          <p>ИП Сермягина Анна Андреевна<br>
+          ИНН 665810153841<br>
+          ОГРНИП 326965800188247<br>
+          E-mail: <a href="mailto:info@vsekupleno.ru">info@vsekupleno.ru</a></p>
+        </div>
+        <div class="footer-col">
+          <h4>Документы</h4>
+          <p>
+            <a href="privacy.html">Политика обработки персональных данных</a><br>
+            <a href="oferta.html">Публичная оферта</a><br>
+            <a href="instruction.html">Инструкция для пользователей</a>
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Мессенджеры</h4>
+          <p>
+            Бот в Telegram — <a href="https://t.me/vsekuplenobot" target="_blank" rel="noopener">@vsekuplenobot</a><br>
+            ТГ канал — <a href="https://t.me/vsekuplenohoreca" target="_blank" rel="noopener">@vsekuplenohoreca</a><br>
+            Бот в MAX — <a href="#" data-role="max-link" target="_blank" rel="noopener">открыть</a>
+          </p>
+        </div>
+      </div>
     </div>
   </footer>
 
