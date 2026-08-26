@@ -10,6 +10,8 @@
   --border: #e4e9ea;
   --radius: 14px;
   --max-width: 1120px;
+  --footer-bg: #14181c;
+  --footer-text-muted: #8a95a1;
 }
 
 * { box-sizing: border-box; }
@@ -193,24 +195,93 @@ a { color: inherit; text-decoration: none; }
 .plan-features li::before {
   content: "";
   position: absolute;
-  left: 0; top: 14px;
-  width: 14px; height: 14px;
+  left: 0; top: 9px;
+  width: 18px; height: 18px;
   border-radius: 50%;
-  background: var(--accent);
+  background: var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 11px no-repeat;
 }
 .plan-actions { display: flex; flex-direction: column; gap: 10px; }
 @media (max-width: 900px) { .pricing-grid { grid-template-columns: 1fr; } }
 
 /* About */
-.about { padding: 70px 0 90px; background: var(--bg-soft); }
+.about { padding: 70px 0 90px; }
 .about-inner { max-width: 720px; margin: 0 auto; text-align: center; }
-.about p { font-size: 1.05rem; }
+.about-card {
+  border: 2px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 36px 32px;
+}
+.about-card p { font-size: 1.1rem; color: var(--text-muted); margin: 0; }
+.about-card strong { color: var(--accent-dark); }
 
 /* Footer */
-.site-footer { padding: 50px 0 40px; border-top: 1px solid var(--border); }
-.footer-brand { font-weight: 700; font-size: 1.05rem; margin-bottom: 36px; }
+.site-footer { padding: 56px 0 40px; background: var(--footer-bg); color: #fff; }
+.footer-brand { font-weight: 700; font-size: 1.05rem; margin-bottom: 36px; color: #fff; }
 .footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-.footer-col h4 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 12px; }
-.footer-col p { font-size: 0.92rem; }
-.footer-col a:hover { color: var(--accent-dark); }
+.footer-col h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--footer-text-muted); margin-bottom: 12px; }
+.footer-col p { font-size: 0.92rem; color: #e4e9ea; }
+.footer-col a:hover { color: var(--accent); }
 @media (max-width: 780px) { .footer-grid { grid-template-columns: 1fr; gap: 24px; } }
+
+/* Simple pages (instruction / legal) */
+.page-hero { padding: 56px 0 8px; }
+.page-hero h1 { font-size: 2.1rem; text-align: left; }
+.page-hero .updated { font-size: 0.85rem; color: var(--text-muted); }
+.doc {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px 20px 90px;
+}
+.doc h2 { text-align: left; font-size: 1.4rem; margin-top: 44px; }
+.doc h3 { font-size: 1.1rem; margin-top: 28px; }
+.doc p, .doc li { color: var(--text-muted); font-size: 0.98rem; }
+.doc ul, .doc ol { padding-left: 22px; }
+.doc li { margin-bottom: 6px; }
+.doc hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+.doc table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9rem; }
+.doc th, .doc td { border: 1px solid var(--border); padding: 8px 10px; text-align: left; color: var(--text-muted); }
+.doc th { background: var(--bg-soft); color: var(--text); font-weight: 600; }
+.doc a { color: var(--accent-dark); text-decoration: underline; }
+.doc-section { margin-bottom: 8px; }
+.doc-intro { color: var(--text-muted); margin-bottom: 24px; }
+
+.instruction-steps { display: flex; flex-direction: column; gap: 22px; margin: 24px 0 40px; }
+.instruction-step {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+}
+.instruction-step h3 {
+  margin-top: 0;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--accent);
+  display: inline-block;
+}
+.command-list { list-style: none; padding: 0; margin: 16px 0 40px; }
+.command-list li { padding: 10px 0; border-bottom: 1px solid var(--border); }
+.command-list code {
+  background: var(--bg-soft);
+  color: var(--accent-dark);
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+/* FAQ accordion (used on instruction page) */
+.faq-list { display: flex; flex-direction: column; gap: 10px; }
+.faq-list details {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 20px;
+}
+.faq-list summary { cursor: pointer; font-weight: 600; color: var(--text); }
+.faq-list p { margin: 12px 0 0; }
+
+code {
+  background: var(--bg-soft);
+  padding: 1px 6px;
+  border-radius: 5px;
+  font-size: 0.9em;
+}
