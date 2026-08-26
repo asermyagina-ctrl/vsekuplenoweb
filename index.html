@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Всё куплено</title>
+  <meta name="description" content="Сервис «Всё куплено» — быстрые закупки и запросы цен через Telegram и MAX.">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ==================== ШАПКА ==================== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#top" class="logo">Всё куплено</a>
+      <nav class="header-nav">
+        <a href="#how">Как это работает</a>
+        <a href="#pricing">Тарифы</a>
+        <a href="#faq">Вопросы</a>
+      </nav>
+      <div class="header-cta">
+        <a href="#" class="btn btn-telegram" data-role="telegram-link" target="_blank" rel="noopener">Открыть в Telegram</a>
+        <a href="#" class="btn btn-max" data-role="max-link" target="_blank" rel="noopener">Открыть в MAX</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== HERO ==================== -->
+  <section id="top" class="hero">
+    <div class="container hero-inner">
+      <h1>[ЗАМЕНИТЬ: главный заголовок — что делает сервис]</h1>
+      <p class="hero-sub">[ЗАМЕНИТЬ: подзаголовок / короткое описание выгоды]</p>
+      <div class="hero-actions">
+        <a href="#" class="btn btn-primary btn-lg" data-role="telegram-link" target="_blank" rel="noopener">Открыть бота в Telegram</a>
+        <a href="#" class="btn btn-secondary btn-lg" data-role="max-link" target="_blank" rel="noopener">Открыть бота в MAX</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== КАК ЭТО РАБОТАЕТ ==================== -->
+  <section id="how" class="how-it-works">
+    <div class="container">
+      <h2>Как это работает</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3>[ЗАМЕНИТЬ: шаг 1]</h3>
+          <p>[ЗАМЕНИТЬ: описание шага 1]</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3>[ЗАМЕНИТЬ: шаг 2]</h3>
+          <p>[ЗАМЕНИТЬ: описание шага 2]</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3>[ЗАМЕНИТЬ: шаг 3]</h3>
+          <p>[ЗАМЕНИТЬ: описание шага 3]</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== СКРИНШОТЫ (заполним позже) ==================== -->
+  <section id="gallery" class="gallery" hidden>
+    <div class="container">
+      <h2>Как это выглядит</h2>
+      <div class="gallery-grid">
+        <!-- Скриншоты бота и онлайн-запросов цен добавим на следующем этапе -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ВИДЕО (заполним позже) ==================== -->
+  <section id="video" class="video-section" hidden>
+    <div class="container">
+      <h2>Видео о сервисе</h2>
+      <div class="video-wrap">
+        <!-- Короткое видео добавим на следующем этапе -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ТАРИФЫ ==================== -->
+  <section id="pricing" class="pricing">
+    <div class="container">
+      <h2>Тарифы</h2>
+      <p class="pricing-sub">Оплатить можно прямо на сайте — картой через ЮKassa или по счету. Также оплата доступна внутри ботов.</p>
+      <div class="pricing-grid">
+
+        <div class="price-card" data-plan="start">
+          <h3 class="plan-name">[Тариф 1]</h3>
+          <div class="plan-price">[цена] ₽<span>/[период]</span></div>
+          <ul class="plan-features">
+            <li>[ЗАМЕНИТЬ: что входит]</li>
+            <li>[ЗАМЕНИТЬ: что входит]</li>
+            <li>[ЗАМЕНИТЬ: что входит]</li>
+          </ul>
+          <div class="plan-actions">
+            <button class="btn btn-primary" data-action="pay-yookassa" data-plan="start">Оплатить картой</button>
+            <button class="btn btn-outline" data-action="pay-invoice" data-plan="start">Оплатить по счету</button>
+          </div>
+        </div>
+
+        <div class="price-card price-card-featured" data-plan="standard">
+          <div class="plan-badge">Популярный</div>
+          <h3 class="plan-name">[Тариф 2]</h3>
+          <div class="plan-price">[цена] ₽<span>/[период]</span></div>
+          <ul class="plan-features">
+            <li>[ЗАМЕНИТЬ: что входит]</li>
+            <li>[ЗАМЕНИТЬ: что входит]</li>
+            <li>[ЗАМЕНИТЬ: что входит]</li>
+          </ul>
+          <div class="plan-actions">
+            <button class="btn btn-primary" data-action="pay-yookassa" data-plan="standard">Оплатить картой</button>
+            <button class="btn btn-outline" data-action="pay-invoice" data-plan="standard">Оплатить по счету</button>
+          </div>
+        </div>
+
+        <div class="price-card" data-plan="pro">
+          <h3 class="plan-name">[Тариф 3]</h3>
+          <div class="plan-price">[цена] ₽<span>/[период]</span></div>
+          <ul class="plan-features">
+            <li>[ЗАМЕНИТЬ: что входит]</li>
+            <li>[ЗАМЕНИТЬ: что входит]</li>
+            <li>[ЗАМЕНИТЬ: что входит]</li>
+          </ul>
+          <div class="plan-actions">
+            <button class="btn btn-primary" data-action="pay-yookassa" data-plan="pro">Оплатить картой</button>
+            <button class="btn btn-outline" data-action="pay-invoice" data-plan="pro">Оплатить по счету</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FAQ ==================== -->
+  <section id="faq" class="faq">
+    <div class="container">
+      <h2>Вопросы и ответы</h2>
+      <div class="faq-list">
+        <details>
+          <summary>[ЗАМЕНИТЬ: вопрос 1]</summary>
+          <p>[ЗАМЕНИТЬ: ответ 1]</p>
+        </details>
+        <details>
+          <summary>[ЗАМЕНИТЬ: вопрос 2]</summary>
+          <p>[ЗАМЕНИТЬ: ответ 2]</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ФУТЕР ==================== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">Всё куплено</div>
+      <div class="footer-links">
+        <a href="#" data-role="telegram-link" target="_blank" rel="noopener">Telegram-бот</a>
+        <a href="#" data-role="max-link" target="_blank" rel="noopener">MAX-бот</a>
+      </div>
+      <div class="footer-legal">[ЗАМЕНИТЬ: контакты / реквизиты / ИНН при необходимости]</div>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
