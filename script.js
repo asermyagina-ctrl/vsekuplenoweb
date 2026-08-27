@@ -180,8 +180,29 @@ function openPaymentModal(plan) {
       : `${plan.price.toLocaleString("ru-RU")} ₽/месяц`;
   if (errorBox) errorBox.setAttribute("hidden", "");
   if (input) input.value = "";
+  showCardForm();
   modal.removeAttribute("hidden");
   if (input) input.focus();
+}
+
+function showCardForm() {
+  document.getElementById("payment-form").removeAttribute("hidden");
+  document.getElementById("payment-form-note").removeAttribute("hidden");
+  document.getElementById("payment-modal-to-invoice").removeAttribute("hidden");
+  document.getElementById("invoice-form").setAttribute("hidden", "");
+  document.getElementById("invoice-form-note").setAttribute("hidden", "");
+  document.getElementById("payment-modal-to-card").setAttribute("hidden", "");
+  document.getElementById("invoice-form-error").setAttribute("hidden", "");
+}
+
+function showInvoiceForm() {
+  document.getElementById("payment-form").setAttribute("hidden", "");
+  document.getElementById("payment-form-note").setAttribute("hidden", "");
+  document.getElementById("payment-modal-to-invoice").setAttribute("hidden", "");
+  document.getElementById("invoice-form").removeAttribute("hidden");
+  document.getElementById("invoice-form-note").removeAttribute("hidden");
+  document.getElementById("payment-modal-to-card").removeAttribute("hidden");
+  document.getElementById("payment-form-error").setAttribute("hidden", "");
 }
 
 function closePaymentModal() {
@@ -198,6 +219,9 @@ function setupPaymentModal() {
   const input = document.getElementById("payment-contact");
   const errorBox = document.getElementById("payment-form-error");
   const submitBtn = document.getElementById("payment-form-submit");
+  const invoiceForm = document.getElementById("invoice-form");
+  const invoiceErrorBox = document.getElementById("invoice-form-error");
+  const invoiceSubmitBtn = document.getElementById("invoice-form-submit");
   if (!modal || !form) return;
 
   closeBtn.addEventListener("click", closePaymentModal);
@@ -207,6 +231,9 @@ function setupPaymentModal() {
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && !modal.hasAttribute("hidden")) closePaymentModal();
   });
+
+  document.getElementById("payment-modal-to-invoice").addEventListener("click", showInvoiceForm);
+  document.getElementById("payment-modal-to-card").addEventListener("click", showCardForm);
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -248,6 +275,52 @@ function setupPaymentModal() {
       errorBox.removeAttribute("hidden");
       submitBtn.disabled = false;
       submitBtn.textContent = "Перейти к оплате";
+    }
+  });
+
+  invoiceForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (!activePaymentPlan) return;
+    const orgName = document.getElementById("invoice-org").value.trim();
+    const inn = document.getElementById("invoice-inn").value.trim();
+    const email = document.getElementById("invoice-email").value.trim();
+    if (!orgName || !inn || !email) return;
+
+    invoiceErrorBox.setAttribute("hidden", "");
+    invoiceSubmitBtn.disabled = true;
+    invoiceSubmitBtn.textContent = "Готовим счёт…";
+
+    try {
+      const response = await fetch(SITE_CONFIG.invoiceWebhookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          planId: activePaymentPlan.id,
+          period: billingPeriod,
+          orgName: orgName,
+          inn: inn,
+          email: email,
+        }),
+      });
+      if (!response.ok) throw new Error("invoice request failed");
+      const blob = await response.blob();
+      const downloadUrl = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = downloadUrl;
+      link.download = `Schet_${activePaymentPlan.name}.pdf`;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(downloadUrl);
+      closePaymentModal();
+      invoiceSubmitBtn.disabled = false;
+      invoiceSubmitBtn.textContent = "Получить счёт (PDF)";
+    } catch (err) {
+      invoiceErrorBox.textContent =
+        "Не получилось создать счёт. Попробуйте ещё раз или напишите нам в Telegram.";
+      invoiceErrorBox.removeAttribute("hidden");
+      invoiceSubmitBtn.disabled = false;
+      invoiceSubmitBtn.textContent = "Получить счёт (PDF)";
     }
   });
 }

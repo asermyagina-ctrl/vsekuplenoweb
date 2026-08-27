@@ -625,6 +625,20 @@ a { color: inherit; text-decoration: none; }
 }
 .payment-form-error[hidden] { display: none; }
 .payment-form-note { font-size: 0.78rem; color: var(--text-muted); margin: 14px 0 0; line-height: 1.4; }
+.payment-modal-switch {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 0.85rem;
+  cursor: pointer;
+  margin-top: 14px;
+  padding: 4px;
+}
+.payment-modal-switch:hover { text-decoration: underline; }
 
 /* About */
 .about { padding: 56px 0 72px; background: var(--bg-white); }

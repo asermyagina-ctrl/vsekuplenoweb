@@ -59,6 +59,9 @@ const SITE_CONFIG = {
   // Адрес вебхука n8n, который создаёт платёж в ЮKassa и возвращает ссылку на оплату.
   paymentWebhookUrl: "https://8422453-rk927884.twc1.net/webhook/site-payment",
 
+  // Адрес вебхука n8n, который генерирует PDF-счёт для оплаты по безналу (юрлица).
+  invoiceWebhookUrl: "https://8422453-rk927884.twc1.net/webhook/site-invoice",
+
   // true: на тарифах показываются кнопки «Купить» (вместо Telegram/MAX),
   // ведут на оплату через n8n → ЮKassa.
   paymentsEnabled: true,
