@@ -115,13 +115,13 @@
   <section class="problem">
     <div class="container">
       <h2>Знакомая картина?</h2>
-      <p class="problem-lead">Пять поставщиков. Пять прайсов. Excel, PDF, сообщения в мессенджерах.</p>
+      <p class="problem-lead">Пять поставщиков. Пять прайсов.<br>Excel, PDF, сообщения в мессенджерах.</p>
       <p class="problem-detail">
         Цены меняются, фасовки отличаются, приходится сравнивать вручную снова и снова.<br>
         Нужен редкий товар? Приходится обзванивать 10 поставщиков или писать в чаты, теряя часы.
       </p>
       <p class="problem-solution">
-        <strong>Вам больше не надо сравнивать цены вручную.</strong><br>
+        <strong class="problem-solution-lead">Вам больше не надо сравнивать цены вручную.</strong><br>
         «Всё куплено» делает эту работу за вас и за минуты показывает, где выгоднее купить.
       </p>
     </div>
@@ -133,37 +133,36 @@
       <h2>Как это устроено?</h2>
       <p class="showcase-sub">Три шага — от загрузки прайса до готового сравнения цен</p>
 
-      <div class="showcase-row">
-        <div class="showcase-media">
+      <div class="showcase-duo">
+        <div class="showcase-duo-media showcase-duo-media-1">
           <div class="phone-mock">
             <div class="phone-mock-screen">
               <img src="assets/img/screen-upload.png" alt="Бот распознаёт присланный прайс, уточняет поставщика и сообщает, что изменилось в ценах">
             </div>
           </div>
         </div>
-        <div class="showcase-text">
-          <p class="eyebrow">Шаг 1</p>
-          <h3>Перешлите прайс боту</h3>
-          <p>Он сам определит поставщика, распознает Excel или PDF и покажет, что изменилось с прошлой загрузки.</p>
+        <div class="showcase-duo-captions">
+          <div class="showcase-duo-caption caption-top">
+            <p class="eyebrow">Шаг 1</p>
+            <h3>Перешлите прайс боту</h3>
+            <p>Он сам определит поставщика, распознает Excel или PDF и покажет, что изменилось с прошлой загрузки.</p>
+          </div>
+          <div class="showcase-duo-caption caption-bottom">
+            <p class="eyebrow">Шаг 2</p>
+            <h3>Спросите цену — получите ответ по всем поставщикам</h3>
+            <p>Напишите название товара обычным текстом — бот пришлёт цены всех поставщиков от дешёвого к дорогому, пересчитанные к одной единице измерения.</p>
+          </div>
         </div>
-      </div>
-
-      <div class="showcase-row reverse">
-        <div class="showcase-media">
+        <div class="showcase-duo-media showcase-duo-media-2">
           <div class="phone-mock">
             <div class="phone-mock-screen">
               <img src="assets/img/screen-request.png" alt="Запрос цен по нескольким товарам сразу у всех поставщиков">
             </div>
           </div>
         </div>
-        <div class="showcase-text">
-          <p class="eyebrow">Шаг 2</p>
-          <h3>Спросите цену — получите ответ по всем поставщикам</h3>
-          <p>Напишите название товара обычным текстом — бот пришлёт цены всех поставщиков от дешёвого к дорогому, пересчитанные к одной единице измерения.</p>
-        </div>
       </div>
 
-      <div class="showcase-row">
+      <div class="showcase-row showcase-step3">
         <div class="showcase-media">
           <img src="assets/img/screen-excel.png" alt="Готовый отчёт сравнения цен поставщиков в Excel с подсветкой лучшей цены">
         </div>
@@ -180,7 +179,7 @@
   <section id="tender" class="flagship">
     <div class="container">
       <p class="flagship-badge"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Флагманская функция</p>
-      <h2>Модуль «Запрос цен»: честный онлайн-аукцион за 2 минуты</h2>
+      <h2>Модуль «Запрос цен»: онлайн-аукцион за 2 минуты</h2>
       <p class="flagship-lead">Как это работает:</p>
       <ol class="flagship-steps">
         <li>
@@ -189,15 +188,15 @@
         </li>
         <li>
           <h3>Поставщикам не нужна регистрация</h3>
-          <p>Персональная ссылка открывается в браузере — и сразу видна текущая лучшая цена.</p>
+          <p>Персональная ссылка открывается в браузере, поставщик видит список позиций и лучшую цену на данный момент.</p>
         </li>
         <li>
-          <h3>Форма вручную или своё КП</h3>
-          <p>Поставщик заполняет форму сам или загружает предложение в своём формате (Excel, PDF) — ИИ распознает товары и фасовки автоматически.</p>
+          <h3>Лёгкое заполнение формы поставщика</h3>
+          <p>Поставщик заполняет форму или загружает предложение в удобном формате (Excel, PDF) — ИИ распознает товары и фасовки автоматически.</p>
         </li>
         <li>
-          <h3>Защита от «нечестных» аналогов</h3>
-          <p>ИИ сверяет бренд и фасовку. Если вы запросили оригинальный соус Kikkoman, а поставщик подставил дешёвый аналог — эта цена не станет ориентиром для остальных, вы получите предупреждение с подсветкой подмены.</p>
+          <h3>Защита от аналогов</h3>
+          <p>ИИ сверяет бренд и фасовку. Если вы запросили оригинальный соус Kikkoman, а поставщик подставил дешёвый аналог — эта цена не станет ориентиром для остальных, вы получите предупреждение с подсветкой замены.</p>
         </li>
       </ol>
       <div class="flagship-media">
@@ -239,8 +238,8 @@
       <p class="pricing-sub">Первые 30 дней — бесплатно и без ограничений</p>
       <div class="pricing-toggle-wrap">
         <div class="period-switch" role="group" aria-label="Период оплаты">
-          <button type="button" class="period-switch-btn is-active" data-period="month">Помесячно</button>
-          <button type="button" class="period-switch-btn" data-period="year">На год <span class="period-switch-save">2 мес. в подарок</span></button>
+          <button type="button" class="period-switch-btn is-active" data-period="month">Оплата за месяц</button>
+          <button type="button" class="period-switch-btn" data-period="year">Оплата за год<span class="period-switch-save">2 месяца в подарок</span></button>
         </div>
       </div>
       <div class="pricing-grid" id="pricing-grid">
