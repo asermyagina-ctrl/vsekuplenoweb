@@ -15,6 +15,7 @@ const SITE_CONFIG = {
       id: "start",
       name: "Старт",
       price: 4900,
+      priceYearly: 49000,
       period: "месяц",
       subtitle: "До 3 пользователей",
       features: [
@@ -27,8 +28,10 @@ const SITE_CONFIG = {
       id: "network",
       name: "Сеть",
       price: 14900,
+      priceYearly: 149000,
       period: "месяц",
       subtitle: "Ресторанные сети, отели, производства",
+      highlight: "Хит продаж",
       features: [
         "Загрузка и распознавание прайсов в excel или pdf",
         "Сравнение цен, включая выдачу результатов в excel",
@@ -40,6 +43,7 @@ const SITE_CONFIG = {
       id: "partner",
       name: "Партнер",
       price: 24900,
+      priceYearly: 249000,
       period: "месяц",
       subtitle: "Специальное предложение",
       features: [

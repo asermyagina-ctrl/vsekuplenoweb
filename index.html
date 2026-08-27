@@ -83,22 +83,30 @@
     <div class="container hero-grid">
       <div class="hero-content">
         <p class="eyebrow">ВСЕ КУПЛЕНО</p>
-        <h1>Умный ассистент закупок в HoReCa</h1>
+        <h1>Умный ассистент закупок для ресторанов и отелей</h1>
         <p class="hero-sub">
-          Закупайте быстрее.<br>
-          Сравнивайте прайсы за минуты.<br>
-          Проводите аукционы прямо в Telegram.
+          Загружайте прайсы в любом формате, автоматизируйте запрос цен и снижайте фудкост на 5–15%.
+          Без сложных программ — прямо в своём мессенджере.
         </p>
-        <div class="hero-actions">
-          <a href="#" class="btn btn-primary btn-lg" data-role="telegram-link" target="_blank" rel="noopener">Открыть бота в Telegram</a>
-          <a href="#" class="btn btn-outline btn-lg" data-role="max-link" target="_blank" rel="noopener">Открыть бота в MAX</a>
+        <ul class="hero-benefits">
+          <li>Сравнение прайсов от 5+ поставщиков за 2 минуты</li>
+          <li>Честный онлайн-аукцион без регистрации для поставщиков</li>
+          <li>Учитывает разную фасовку, бренды и единицы измерения</li>
+        </ul>
+        <div class="hero-cta">
+          <button type="button" class="btn btn-primary btn-lg" id="hero-cta-btn" aria-expanded="false" aria-controls="hero-cta-choice">Попробовать 30 дней бесплатно</button>
+          <div class="hero-cta-choice" id="hero-cta-choice" hidden>
+            <a href="#" class="btn btn-outline" data-role="telegram-link" target="_blank" rel="noopener">Открыть в Telegram</a>
+            <a href="#" class="btn btn-outline" data-role="max-link" target="_blank" rel="noopener">Открыть в MAX</a>
+          </div>
+          <p class="hero-note">Без привязки карты. Подключение за 1 минуту</p>
         </div>
-        <p class="hero-trial">Попробовать 30 дней бесплатно</p>
-        <p class="hero-note">Бесплатно, без подписки, без данных карты</p>
       </div>
       <div class="hero-proof">
-        <div class="hero-proof-frame">
-          <img src="assets/img/screen-excel.png" alt="Готовый отчёт сравнения цен поставщиков в Excel с подсветкой лучшей цены">
+        <div class="phone-mock">
+          <div class="phone-mock-screen">
+            <img src="assets/img/screen-upload.png" alt="Бот распознаёт присланный прайс в Telegram, уточняет поставщика и сообщает, что изменилось в ценах">
+          </div>
         </div>
       </div>
     </div>
@@ -108,9 +116,12 @@
   <section class="problem">
     <div class="container">
       <h2>Знакомая картина?</h2>
+      <ul class="problem-list">
+        <li>Несколько поставщиков с похожим ассортиментом, прайсы в разных форматах — легко упустить лучшее предложение.</li>
+        <li>Нужен соус шисо или редкий сыр? Приходится обзванивать 10 поставщиков или писать в десятки чатов, теряя часы.</li>
+        <li>Поставщики меняют прайсы каждую неделю и незаметно «накидывают» по 5–10 рублей на позиции — вы узнаёте об этом только из итоговых отчётов.</li>
+      </ul>
       <p class="problem-text">
-        Несколько поставщиков с похожим ассортиментом, прайсы в разных форматах — легко упустить лучшее предложение.<br>
-        Еженедельное сравнение цен на овощи и фрукты, биржевые позиции — рутина, которая отнимает время.<br>
         <strong>Вам больше не надо сравнивать цены вручную.</strong><br>
         «Всё куплено» делает эту работу за вас и за минуты показывает, где выгоднее купить.
       </p>
@@ -159,17 +170,56 @@
     </div>
   </section>
 
+  <!-- ==================== ФЛАГМАНСКАЯ ФУНКЦИЯ: ЗАПРОС ЦЕН ==================== -->
+  <section id="tender" class="flagship">
+    <div class="container">
+      <p class="flagship-badge">⚡ Флагманская функция</p>
+      <h2>Модуль «Запрос цен»: честный онлайн-аукцион за 2 минуты</h2>
+      <p class="flagship-lead">Как это работает для вас:</p>
+      <ol class="flagship-steps">
+        <li>
+          <h3>Создаётся из мессенджера — открывается в вебе</h3>
+          <p>Формируйте запрос прямо через бота за пару кликов.</p>
+        </li>
+        <li>
+          <h3>Поставщикам не нужна регистрация</h3>
+          <p>Они получают персональную ссылку, открывают её в браузере с телефона или ПК и сразу видят текущую лучшую цену.</p>
+        </li>
+        <li>
+          <h3>Можно заполнить вручную или прислать своё КП</h3>
+          <p>Поставщик заполняет форму сам или просто загружает своё предложение в привычном формате Excel или PDF — ИИ сам распознает товары и фасовки и заполнит форму за него.</p>
+        </li>
+        <li>
+          <h3>Защита от «нечестных» аналогов</h3>
+          <p>ИИ проверяет соответствие брендов и фасовок. Например: если вы запросили оригинальный соус Kikkoman, а поставщик предложил дешёвый аналог, эта цена не станет ориентиром для остальных — вы получите предупреждение с подсветкой подмены.</p>
+        </li>
+      </ol>
+      <div class="flagship-media">
+        <img src="assets/img/screen-tender-form.png" alt="Форма поставщика для отправки предложения в онлайн-аукционе">
+        <div class="flagship-media-stack">
+          <img src="assets/img/screen-tender-bids-1.png" alt="Система подсвечивает, если поставщик предложил другой бренд товара">
+          <img src="assets/img/screen-tender-bids-2.png" alt="Система подсвечивает, если поставщик предложил другую фасовку товара">
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ==================== СКРИНШОТЫ ==================== -->
   <section id="gallery" class="showcase">
     <div class="container">
       <h2>Как это выглядит</h2>
-      <p class="showcase-sub">Реальные сценарии работы бота — от загрузки прайса до готового сравнения цен</p>
+      <p class="showcase-sub">Три шага — от загрузки прайса до готового сравнения цен</p>
 
       <div class="showcase-row">
         <div class="showcase-media">
-          <img src="assets/img/screen-upload.png" alt="Бот распознаёт присланный прайс, уточняет поставщика и сообщает, что изменилось в ценах">
+          <div class="phone-mock">
+            <div class="phone-mock-screen">
+              <img src="assets/img/screen-upload.png" alt="Бот распознаёт присланный прайс, уточняет поставщика и сообщает, что изменилось в ценах">
+            </div>
+          </div>
         </div>
         <div class="showcase-text">
+          <p class="eyebrow">Шаг 1</p>
           <h3>Просто перешлите прайс боту</h3>
           <p>Бот сам уточнит поставщика, распознает файл в любом виде — Excel или PDF — и сравнит цены с предыдущей загрузкой: покажет, что подорожало, а что подешевело. Без единого лишнего клика с вашей стороны.</p>
         </div>
@@ -177,9 +227,14 @@
 
       <div class="showcase-row reverse">
         <div class="showcase-media">
-          <img src="assets/img/screen-request.png" alt="Запрос цен по нескольким товарам сразу у всех поставщиков">
+          <div class="phone-mock">
+            <div class="phone-mock-screen">
+              <img src="assets/img/screen-request.png" alt="Запрос цен по нескольким товарам сразу у всех поставщиков">
+            </div>
+          </div>
         </div>
         <div class="showcase-text">
+          <p class="eyebrow">Шаг 2</p>
           <h3>Спросите цену — получите сравнение сразу по всем поставщикам</h3>
           <p>Напишите список товаров обычным текстом — бот покажет цены всех поставщиков от дешёвого к дорогому, честно пересчитанные к одной единице измерения, даже если фасовка у поставщиков разная.</p>
         </div>
@@ -190,31 +245,9 @@
           <img src="assets/img/screen-excel.png" alt="Готовый отчёт сравнения цен поставщиков в Excel с подсветкой лучшей цены">
         </div>
         <div class="showcase-text">
+          <p class="eyebrow">Шаг 3</p>
           <h3>Готовый отчёт — сразу в Excel</h3>
           <p>Одной кнопкой получаете аккуратную таблицу сравнения с подсветкой лучшей цены по каждой позиции — можно сразу отправить коллегам или приложить к заказу поставщику.</p>
-        </div>
-      </div>
-
-      <p class="showcase-divider">А если нужно собрать предложения от нескольких поставщиков сразу — запустите онлайн-аукцион</p>
-
-      <div class="showcase-row reverse">
-        <div class="showcase-media">
-          <img src="assets/img/screen-tender-form.png" alt="Форма поставщика для отправки предложения в онлайн-аукционе">
-        </div>
-        <div class="showcase-text">
-          <h3>Поставщику даже не нужна регистрация</h3>
-          <p>Каждый поставщик получает персональную ссылку на простую форму: можно заполнить прямо в браузере или сразу загрузить свой прайс — ИИ сам сопоставит позиции. Все цены видит только организатор закупки, поставщики не видят предложения друг друга.</p>
-        </div>
-      </div>
-
-      <div class="showcase-row">
-        <div class="showcase-media showcase-media-stack">
-          <img src="assets/img/screen-tender-bids-1.png" alt="Система подсвечивает, если поставщик предложил другой бренд товара">
-          <img src="assets/img/screen-tender-bids-2.png" alt="Система подсвечивает, если поставщик предложил другую фасовку товара">
-        </div>
-        <div class="showcase-text">
-          <h3>Система сама заметит подмену товара</h3>
-          <p>Если поставщик предложил другой бренд, другую фасовку или прислал предложение без названия товара — «Всё куплено» подсветит это и по умолчанию не включит такую позицию в сравнение цен. Никто не будет введён в заблуждение чужой ценой на другой товар.</p>
         </div>
       </div>
     </div>
@@ -247,8 +280,17 @@
     <div class="container">
       <h2>Тарифы</h2>
       <p class="pricing-sub">Первые 30 дней — бесплатно и без ограничений</p>
+      <div class="pricing-toggle" role="group" aria-label="Период оплаты">
+        <button type="button" class="pricing-toggle-btn is-active" data-period="month">На 1 месяц</button>
+        <button type="button" class="pricing-toggle-btn" data-period="year">На 1 год <span class="pricing-toggle-badge">2 месяца в подарок</span></button>
+      </div>
       <div class="pricing-grid" id="pricing-grid">
         <!-- Карточки тарифов генерируются из config.js (script.js) -->
+      </div>
+      <div class="pricing-assurance">
+        <p>💳 Любые способы оплаты: банковской картой или по безналичному расчёту — счёт для юрлиц и ИП со всеми закрывающими документами.</p>
+        <p>🎁 30 дней полноценного тест-драйва: попробуйте все возможности сервиса, включая модуль «Запрос цен», бесплатно.</p>
+        <p>Выбирайте удобную площадку: работайте в Telegram или в MAX — вся функциональность доступна в обоих мессенджерах.</p>
       </div>
     </div>
   </section>
