@@ -306,6 +306,22 @@
     <img id="lightbox-img" src="" alt="">
   </div>
 
+  <!-- ==================== МОДАЛКА ОПЛАТЫ ==================== -->
+  <div class="payment-modal" id="payment-modal" hidden>
+    <div class="payment-modal-card">
+      <button type="button" class="payment-modal-close" id="payment-modal-close" aria-label="Закрыть"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true"><line x1="4" y1="4" x2="20" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="20" y1="4" x2="4" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+      <p class="payment-modal-plan" id="payment-modal-plan">Тариф «Старт»</p>
+      <p class="payment-modal-price" id="payment-modal-price">4 900 ₽/месяц</p>
+      <form class="payment-form" id="payment-form">
+        <label for="payment-contact">Email или Telegram — чтобы мы активировали доступ после оплаты</label>
+        <input type="text" id="payment-contact" name="contact" placeholder="you@example.com или @username" required>
+        <p class="payment-form-error" id="payment-form-error" hidden></p>
+        <button type="submit" class="btn btn-primary" id="payment-form-submit">Перейти к оплате</button>
+      </form>
+      <p class="payment-form-note">После оплаты мы активируем доступ вручную и напишем вам — обычно в течение пары часов в рабочее время.</p>
+    </div>
+  </div>
+
   <!-- ==================== НАВЕРХ ==================== -->
   <button type="button" class="back-to-top" id="back-to-top" aria-label="Наверх">
     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>

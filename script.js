@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupLightbox();
   setupBackToTop();
   setupCookieBanner();
+  setupPaymentModal();
   renderPricing();
 });
 
@@ -121,8 +122,7 @@ function renderPricing() {
 
       const actionsHtml = SITE_CONFIG.paymentsEnabled
         ? `
-          <button class="btn btn-primary" data-action="pay-yookassa" data-plan="${plan.id}">Оплатить картой</button>
-          <button class="btn btn-outline" data-action="pay-invoice" data-plan="${plan.id}">Оплатить по счету</button>
+          <button class="btn btn-primary" data-action="buy" data-plan="${plan.id}">Купить</button>
         `
         : `
           <a class="btn btn-telegram" href="${SITE_CONFIG.telegramBotUrl}" target="_blank" rel="noopener">${ICON_SEND}Открыть в Telegram</a>
@@ -153,10 +153,93 @@ function renderPricing() {
     .join("");
 
   if (SITE_CONFIG.paymentsEnabled) {
-    grid.querySelectorAll('[data-action="pay-yookassa"], [data-action="pay-invoice"]').forEach((btn) => {
+    grid.querySelectorAll('[data-action="buy"]').forEach((btn) => {
       btn.addEventListener("click", () => {
-        // TODO: здесь будет вызов серверной функции создания платежа ЮKassa / выставления счёта
+        const plan = SITE_CONFIG.plans.find((p) => p.id === btn.dataset.plan);
+        if (plan) openPaymentModal(plan);
       });
     });
   }
+}
+
+let activePaymentPlan = null;
+
+function openPaymentModal(plan) {
+  const modal = document.getElementById("payment-modal");
+  const planLabel = document.getElementById("payment-modal-plan");
+  const priceLabel = document.getElementById("payment-modal-price");
+  const errorBox = document.getElementById("payment-form-error");
+  const input = document.getElementById("payment-contact");
+  if (!modal || !planLabel || !priceLabel) return;
+
+  activePaymentPlan = plan;
+  planLabel.textContent = `Тариф «${plan.name}»`;
+  priceLabel.textContent =
+    billingPeriod === "year" && plan.priceYearly
+      ? `${plan.priceYearly.toLocaleString("ru-RU")} ₽/год`
+      : `${plan.price.toLocaleString("ru-RU")} ₽/месяц`;
+  if (errorBox) errorBox.setAttribute("hidden", "");
+  if (input) input.value = "";
+  modal.removeAttribute("hidden");
+  if (input) input.focus();
+}
+
+function closePaymentModal() {
+  const modal = document.getElementById("payment-modal");
+  if (!modal) return;
+  modal.setAttribute("hidden", "");
+  activePaymentPlan = null;
+}
+
+function setupPaymentModal() {
+  const modal = document.getElementById("payment-modal");
+  const closeBtn = document.getElementById("payment-modal-close");
+  const form = document.getElementById("payment-form");
+  const input = document.getElementById("payment-contact");
+  const errorBox = document.getElementById("payment-form-error");
+  const submitBtn = document.getElementById("payment-form-submit");
+  if (!modal || !form) return;
+
+  closeBtn.addEventListener("click", closePaymentModal);
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) closePaymentModal();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !modal.hasAttribute("hidden")) closePaymentModal();
+  });
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (!activePaymentPlan) return;
+    const contact = input.value.trim();
+    if (!contact) return;
+
+    errorBox.setAttribute("hidden", "");
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Создаём платёж…";
+
+    try {
+      const response = await fetch(SITE_CONFIG.paymentWebhookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          planId: activePaymentPlan.id,
+          period: billingPeriod,
+          contact: contact,
+        }),
+      });
+      const data = await response.json().catch(() => null);
+      if (response.ok && data && data.confirmation_url) {
+        window.location.href = data.confirmation_url;
+        return;
+      }
+      throw new Error("no confirmation_url");
+    } catch (err) {
+      errorBox.textContent =
+        "Не получилось создать платёж. Попробуйте ещё раз или напишите нам в Telegram.";
+      errorBox.removeAttribute("hidden");
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Перейти к оплате";
+    }
+  });
 }
