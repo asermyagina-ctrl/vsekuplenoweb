@@ -184,6 +184,15 @@ a { color: inherit; text-decoration: none; }
   display: block;
   border-radius: 18px;
 }
+.showcase-media-stack { display: flex; flex-direction: column; gap: 18px; }
+.showcase-divider {
+  text-align: center;
+  max-width: 520px;
+  margin: 0 auto 60px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+}
 .showcase-text h3 { font-size: 1.5rem; margin-bottom: 14px; }
 .showcase-text p { font-size: 1.02rem; }
 @media (max-width: 860px) {
