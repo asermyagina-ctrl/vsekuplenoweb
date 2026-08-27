@@ -17,8 +17,36 @@ document.addEventListener("DOMContentLoaded", () => {
   setupHeroCta();
   setupPricingToggle();
   setupLightbox();
+  setupBackToTop();
+  setupCookieBanner();
   renderPricing();
 });
+
+function setupBackToTop() {
+  const btn = document.getElementById("back-to-top");
+  if (!btn) return;
+  const toggle = () => btn.classList.toggle("visible", window.scrollY > 480);
+  window.addEventListener("scroll", toggle, { passive: true });
+  toggle();
+  btn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+}
+
+function setupCookieBanner() {
+  const banner = document.getElementById("cookie-banner");
+  const acceptBtn = document.getElementById("cookie-accept");
+  if (!banner || !acceptBtn) return;
+  let consent = null;
+  try {
+    consent = localStorage.getItem("cookieConsent");
+  } catch (e) {}
+  if (!consent) banner.removeAttribute("hidden");
+  acceptBtn.addEventListener("click", () => {
+    try {
+      localStorage.setItem("cookieConsent", "1");
+    } catch (e) {}
+    banner.setAttribute("hidden", "");
+  });
+}
 
 function setupHeroCta() {
   const btn = document.getElementById("hero-cta-btn");
@@ -68,9 +96,11 @@ function setupLightbox() {
     lightboxImg.src = "";
   };
 
-  document.querySelectorAll(".showcase-media img, .flagship-media img").forEach((img) => {
-    img.addEventListener("click", () => open(img.src, img.alt));
-  });
+  document
+    .querySelectorAll(".showcase-media img, .showcase-duo-media img, .flagship-media img, .hero-proof img")
+    .forEach((img) => {
+      img.addEventListener("click", () => open(img.src, img.alt));
+    });
 
   lightbox.addEventListener("click", (e) => {
     if (e.target === lightbox) close();
