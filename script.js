@@ -1,5 +1,10 @@
 let billingPeriod = "month";
 
+const ICON_SEND =
+  '<svg class="btn-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polygon points="22 2 15 22 11 13 2 9 22 2" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>';
+const ICON_CHAT =
+  '<svg class="btn-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-4.5 7.4 8.5 8.5 0 0 1-8.9-.3L3 20l1.4-4.1a8.38 8.38 0 0 1-1.4-4.6 8.5 8.5 0 0 1 8.5-8.3h.3a8.48 8.48 0 0 1 8 8v.5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
 document.addEventListener("DOMContentLoaded", () => {
   // Подставляем ссылки на ботов везде, где стоит data-role
   document.querySelectorAll('[data-role="telegram-link"]').forEach((el) => {
@@ -11,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   setupHeroCta();
   setupPricingToggle();
+  setupLightbox();
   renderPricing();
 });
 
@@ -32,17 +38,46 @@ function setupHeroCta() {
 }
 
 function setupPricingToggle() {
-  const toggle = document.querySelector(".pricing-toggle");
+  const toggle = document.querySelector(".period-switch");
   if (!toggle) return;
 
-  toggle.querySelectorAll(".pricing-toggle-btn").forEach((btn) => {
+  toggle.querySelectorAll(".period-switch-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       billingPeriod = btn.dataset.period;
-      toggle.querySelectorAll(".pricing-toggle-btn").forEach((b) => {
+      toggle.querySelectorAll(".period-switch-btn").forEach((b) => {
         b.classList.toggle("is-active", b === btn);
       });
       renderPricing();
     });
+  });
+}
+
+function setupLightbox() {
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  const closeBtn = document.getElementById("lightbox-close");
+  if (!lightbox || !lightboxImg || !closeBtn) return;
+
+  const open = (src, alt) => {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || "";
+    lightbox.removeAttribute("hidden");
+  };
+  const close = () => {
+    lightbox.setAttribute("hidden", "");
+    lightboxImg.src = "";
+  };
+
+  document.querySelectorAll(".showcase-media img, .flagship-media img").forEach((img) => {
+    img.addEventListener("click", () => open(img.src, img.alt));
+  });
+
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) close();
+  });
+  closeBtn.addEventListener("click", close);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") close();
   });
 }
 
@@ -60,8 +95,8 @@ function renderPricing() {
           <button class="btn btn-outline" data-action="pay-invoice" data-plan="${plan.id}">Оплатить по счету</button>
         `
         : `
-          <a class="btn btn-primary" href="${SITE_CONFIG.telegramBotUrl}" target="_blank" rel="noopener">Открыть бот в Telegram</a>
-          <a class="btn btn-outline" href="${SITE_CONFIG.maxBotUrl}" target="_blank" rel="noopener">Открыть бот в MAX</a>
+          <a class="btn btn-telegram" href="${SITE_CONFIG.telegramBotUrl}" target="_blank" rel="noopener">${ICON_SEND}Открыть в Telegram</a>
+          <a class="btn btn-max" href="${SITE_CONFIG.maxBotUrl}" target="_blank" rel="noopener">${ICON_CHAT}Открыть в MAX</a>
         `;
 
       const priceHtml =

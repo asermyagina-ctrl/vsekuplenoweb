@@ -66,14 +66,14 @@
         ВСЕ КУПЛЕНО
       </a>
       <nav class="header-nav">
-        <a href="#how">Как это работает</a>
+        <a href="#gallery">Как это работает</a>
         <a href="#prices">Тарифы</a>
         <a href="instruction.html">Инструкция пользователя</a>
         <a href="#footer">Контакты</a>
       </nav>
       <div class="header-cta">
-        <a href="#" class="btn btn-primary" data-role="telegram-link" target="_blank" rel="noopener"><span class="btn-text-full">Открыть бот в Telegram</span><span class="btn-text-short">Telegram</span></a>
-        <a href="#" class="btn btn-outline" data-role="max-link" target="_blank" rel="noopener"><span class="btn-text-full">Открыть бот в MAX</span><span class="btn-text-short">MAX</span></a>
+        <a href="#" class="btn btn-telegram" data-role="telegram-link" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polygon points="22 2 15 22 11 13 2 9 22 2" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span class="btn-text-full">Открыть бот в Telegram</span><span class="btn-text-short">Telegram</span></a>
+        <a href="#" class="btn btn-max" data-role="max-link" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-4.5 7.4 8.5 8.5 0 0 1-8.9-.3L3 20l1.4-4.1a8.38 8.38 0 0 1-1.4-4.6 8.5 8.5 0 0 1 8.5-8.3h.3a8.48 8.48 0 0 1 8 8v.5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="btn-text-full">Открыть бот в MAX</span><span class="btn-text-short">MAX</span></a>
       </div>
     </div>
   </header>
@@ -83,21 +83,20 @@
     <div class="container hero-grid">
       <div class="hero-content">
         <p class="eyebrow">ВСЕ КУПЛЕНО</p>
-        <h1>Умный ассистент закупок для ресторанов и отелей</h1>
+        <h1>Умный ассистент закупок для HoReCa</h1>
         <p class="hero-sub">
-          Загружайте прайсы в любом формате, автоматизируйте запрос цен и снижайте фудкост на 5–15%.
-          Без сложных программ — прямо в своём мессенджере.
+          Сравнивайте прайсы, автоматизируйте запрос цен и снижайте фудкост на 5–15% — прямо в Telegram или MAX.
         </p>
         <ul class="hero-benefits">
-          <li>Сравнение прайсов от 5+ поставщиков за 2 минуты</li>
-          <li>Честный онлайн-аукцион без регистрации для поставщиков</li>
-          <li>Учитывает разную фасовку, бренды и единицы измерения</li>
+          <li>Сравнение цен от 5+ поставщиков за 2 минуты</li>
+          <li>Аукцион между поставщиками без их регистрации</li>
+          <li>Учитывает бренды, фасовку и единицы измерения</li>
         </ul>
         <div class="hero-cta">
           <button type="button" class="btn btn-primary btn-lg" id="hero-cta-btn" aria-expanded="false" aria-controls="hero-cta-choice">Попробовать 30 дней бесплатно</button>
           <div class="hero-cta-choice" id="hero-cta-choice" hidden>
-            <a href="#" class="btn btn-outline" data-role="telegram-link" target="_blank" rel="noopener">Открыть в Telegram</a>
-            <a href="#" class="btn btn-outline" data-role="max-link" target="_blank" rel="noopener">Открыть в MAX</a>
+            <a href="#" class="btn btn-telegram" data-role="telegram-link" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polygon points="22 2 15 22 11 13 2 9 22 2" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>Telegram</a>
+            <a href="#" class="btn btn-max" data-role="max-link" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-4.5 7.4 8.5 8.5 0 0 1-8.9-.3L3 20l1.4-4.1a8.38 8.38 0 0 1-1.4-4.6 8.5 8.5 0 0 1 8.5-8.3h.3a8.48 8.48 0 0 1 8 8v.5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>MAX</a>
           </div>
           <p class="hero-note">Без привязки карты. Подключение за 1 минуту</p>
         </div>
@@ -121,10 +120,6 @@
         <li>Нужен соус шисо или редкий сыр? Приходится обзванивать 10 поставщиков или писать в десятки чатов, теряя часы.</li>
         <li>Поставщики меняют прайсы каждую неделю и незаметно «накидывают» по 5–10 рублей на позиции — вы узнаёте об этом только из итоговых отчётов.</li>
       </ul>
-      <p class="problem-text">
-        <strong>Вам больше не надо сравнивать цены вручную.</strong><br>
-        «Всё куплено» делает эту работу за вас и за минуты показывает, где выгоднее купить.
-      </p>
     </div>
   </section>
 
@@ -134,37 +129,19 @@
       <h2>Забудьте о хаосе в закупках</h2>
       <div class="features-grid">
         <div class="feature">
-          <h3>Прозрачные цены поставщиков</h3>
-          <p>Автоматически сравниваем прайс-листы, отслеживаем повышения цен и находим лучшие условия. Тысячи позиций за пару минут.</p>
+          <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden="true"><path d="M20.59 13.41L13.42 20.58a2 2 0 0 1-2.83 0L2.59 12.58a2 2 0 0 1-.59-1.42V4a2 2 0 0 1 2-2h7.17a2 2 0 0 1 1.41.59l8 8a2 2 0 0 1 0 2.82z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><line x1="7" y1="7" x2="7.01" y2="7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+          <h3>Прозрачные цены</h3>
+          <p>Сравниваем прайсы всех поставщиков и находим лучшую цену за минуты.</p>
         </div>
         <div class="feature">
-          <h3>Минимум рутины и ошибок</h3>
-          <p>Заявки формируются в пару кликов. Никаких потерянных сообщений в мессенджерах и путаницы в накладных.</p>
+          <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden="true"><polyline points="9 11 12 14 22 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3>Меньше рутины</h3>
+          <p>Заявки и сравнения — в пару кликов, без путаницы и потерянных сообщений.</p>
         </div>
         <div class="feature">
-          <h3>Онлайн запросы цен (аукционы)</h3>
-          <p>Запустите онлайн-аукцион за пару минут. Поставщикам не нужна регистрация, весь процесс организован максимально понятно и удобно для вас и ваших поставщиков.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== КАК ЭТО РАБОТАЕТ ==================== -->
-  <section id="how" class="how-it-works">
-    <div class="container">
-      <h2>Всё устроено так, чтобы вам не пришлось менять привычки</h2>
-      <div class="steps">
-        <div class="step">
-          <h3>Отправляете прайс в Telegram</h3>
-          <p>Присылаете боту прайс-лист так, как получили его от поставщика — Excel или PDF, в любом виде. Готовить файл заранее не нужно: бот сам разберётся, где название товара, а где цена.</p>
-        </div>
-        <div class="step">
-          <h3>Бот находит разницу</h3>
-          <p>Как только в системе оказывается второй прайс с пересекающимся ассортиментом, приходит отчёт: какие товары есть у обоих поставщиков и у кого дешевле. Без единого запроса с вашей стороны.</p>
-        </div>
-        <div class="step">
-          <h3>Спросили — получили ответ</h3>
-          <p>Написали простыми словами: «сколько стоят сливки 33%» — бот присылает цены всех поставщиков сразу, от дешёвого к дорогому, честно посчитанные к одной единице измерения, даже если фасовка разная.</p>
+          <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+          <h3>Онлайн-аукционы</h3>
+          <p>Собираем конкурентные предложения от поставщиков без их регистрации.</p>
         </div>
       </div>
     </div>
@@ -173,25 +150,25 @@
   <!-- ==================== ФЛАГМАНСКАЯ ФУНКЦИЯ: ЗАПРОС ЦЕН ==================== -->
   <section id="tender" class="flagship">
     <div class="container">
-      <p class="flagship-badge">⚡ Флагманская функция</p>
+      <p class="flagship-badge"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Флагманская функция</p>
       <h2>Модуль «Запрос цен»: честный онлайн-аукцион за 2 минуты</h2>
-      <p class="flagship-lead">Как это работает для вас:</p>
+      <p class="flagship-lead">Как это работает:</p>
       <ol class="flagship-steps">
         <li>
-          <h3>Создаётся из мессенджера — открывается в вебе</h3>
-          <p>Формируйте запрос прямо через бота за пару кликов.</p>
+          <h3>Создаётся из бота — открывается в браузере</h3>
+          <p>Формируете запрос за пару кликов прямо в мессенджере.</p>
         </li>
         <li>
           <h3>Поставщикам не нужна регистрация</h3>
-          <p>Они получают персональную ссылку, открывают её в браузере с телефона или ПК и сразу видят текущую лучшую цену.</p>
+          <p>Персональная ссылка открывается в браузере — и сразу видна текущая лучшая цена.</p>
         </li>
         <li>
-          <h3>Можно заполнить вручную или прислать своё КП</h3>
-          <p>Поставщик заполняет форму сам или просто загружает своё предложение в привычном формате Excel или PDF — ИИ сам распознает товары и фасовки и заполнит форму за него.</p>
+          <h3>Форма вручную или своё КП</h3>
+          <p>Поставщик заполняет форму сам или загружает предложение в своём формате (Excel, PDF) — ИИ распознает товары и фасовки автоматически.</p>
         </li>
         <li>
           <h3>Защита от «нечестных» аналогов</h3>
-          <p>ИИ проверяет соответствие брендов и фасовок. Например: если вы запросили оригинальный соус Kikkoman, а поставщик предложил дешёвый аналог, эта цена не станет ориентиром для остальных — вы получите предупреждение с подсветкой подмены.</p>
+          <p>ИИ сверяет бренд и фасовку. Если вы запросили оригинальный соус Kikkoman, а поставщик подставил дешёвый аналог — эта цена не станет ориентиром для остальных, вы получите предупреждение с подсветкой подмены.</p>
         </li>
       </ol>
       <div class="flagship-media">
@@ -220,8 +197,8 @@
         </div>
         <div class="showcase-text">
           <p class="eyebrow">Шаг 1</p>
-          <h3>Просто перешлите прайс боту</h3>
-          <p>Бот сам уточнит поставщика, распознает файл в любом виде — Excel или PDF — и сравнит цены с предыдущей загрузкой: покажет, что подорожало, а что подешевело. Без единого лишнего клика с вашей стороны.</p>
+          <h3>Пришлите прайс, как есть</h3>
+          <p>Excel или PDF, в любом виде — бот сам распознает поставщика и сравнит цены с предыдущей загрузкой: что подорожало, а что подешевело.</p>
         </div>
       </div>
 
@@ -235,8 +212,8 @@
         </div>
         <div class="showcase-text">
           <p class="eyebrow">Шаг 2</p>
-          <h3>Спросите цену — получите сравнение сразу по всем поставщикам</h3>
-          <p>Напишите список товаров обычным текстом — бот покажет цены всех поставщиков от дешёвого к дорогому, честно пересчитанные к одной единице измерения, даже если фасовка у поставщиков разная.</p>
+          <h3>Спросите цену — получите ответ по всем поставщикам</h3>
+          <p>Напишите название товара обычным текстом — бот пришлёт цены всех поставщиков от дешёвого к дорогому, пересчитанные к одной единице измерения.</p>
         </div>
       </div>
 
@@ -247,7 +224,7 @@
         <div class="showcase-text">
           <p class="eyebrow">Шаг 3</p>
           <h3>Готовый отчёт — сразу в Excel</h3>
-          <p>Одной кнопкой получаете аккуратную таблицу сравнения с подсветкой лучшей цены по каждой позиции — можно сразу отправить коллегам или приложить к заказу поставщику.</p>
+          <p>Таблица с подсветкой лучшей цены по каждой позиции — сразу отправляйте коллегам или поставщику.</p>
         </div>
       </div>
     </div>
@@ -266,11 +243,11 @@
   <!-- ==================== БЕЗОПАСНОСТЬ ==================== -->
   <section class="safety">
     <div class="container">
+      <span class="safety-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       <h2>А что насчет безопасности данных?</h2>
       <p>
-        Прайсы поставщиков — это то, что не показывают даже соседям по рынку, и мы относимся к этому серьёзно.<br>
         Ваши данные видите только вы.<br>
-        Ни поставщики, ни другие пользователи не имеют доступ к этой информации.
+        Ни поставщики, ни другие пользователи не имеют доступа к этой информации.
       </p>
     </div>
   </section>
@@ -280,17 +257,19 @@
     <div class="container">
       <h2>Тарифы</h2>
       <p class="pricing-sub">Первые 30 дней — бесплатно и без ограничений</p>
-      <div class="pricing-toggle" role="group" aria-label="Период оплаты">
-        <button type="button" class="pricing-toggle-btn is-active" data-period="month">На 1 месяц</button>
-        <button type="button" class="pricing-toggle-btn" data-period="year">На 1 год <span class="pricing-toggle-badge">2 месяца в подарок</span></button>
+      <div class="pricing-toggle-wrap">
+        <div class="period-switch" role="group" aria-label="Период оплаты">
+          <button type="button" class="period-switch-btn is-active" data-period="month">Помесячно</button>
+          <button type="button" class="period-switch-btn" data-period="year">На год <span class="period-switch-save">2 мес. в подарок</span></button>
+        </div>
       </div>
       <div class="pricing-grid" id="pricing-grid">
         <!-- Карточки тарифов генерируются из config.js (script.js) -->
       </div>
       <div class="pricing-assurance">
-        <p>💳 Любые способы оплаты: банковской картой или по безналичному расчёту — счёт для юрлиц и ИП со всеми закрывающими документами.</p>
-        <p>🎁 30 дней полноценного тест-драйва: попробуйте все возможности сервиса, включая модуль «Запрос цен», бесплатно.</p>
-        <p>Выбирайте удобную площадку: работайте в Telegram или в MAX — вся функциональность доступна в обоих мессенджерах.</p>
+        <p class="pricing-assurance-item"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2" stroke="currentColor" stroke-width="1.8"/><line x1="1" y1="10" x2="23" y2="10" stroke="currentColor" stroke-width="1.8"/></svg>Любые способы оплаты: картой или по безналу — счёт для юрлиц и ИП со всеми закрывающими документами.</p>
+        <p class="pricing-assurance-item"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.8"/><line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="1.8"/></svg>30 дней полноценного теста бесплатно, включая модуль «Запрос цен».</p>
+        <p class="pricing-assurance-item"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-4.5 7.4 8.5 8.5 0 0 1-8.9-.3L3 20l1.4-4.1a8.38 8.38 0 0 1-1.4-4.6 8.5 8.5 0 0 1 8.5-8.3h.3a8.48 8.48 0 0 1 8 8v.5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Работайте в Telegram или в MAX — весь функционал доступен на обеих площадках.</p>
       </div>
     </div>
   </section>
@@ -301,10 +280,8 @@
       <h2>Как появился «Все куплено»</h2>
       <div class="about-card">
         <p>
-          Мы создали сервис для себя, воплотив 15 лет опыта работы в HoReCa.
-          Сервис, которым <strong>сами хотели пользоваться</strong>.
-          Все устали от ручного сравнения прайсов, неудобных площадок, разных форматов и единиц измерения.
-          «Все куплено» — инструмент, который реально экономит время. Без сложных внедрений, без обучения. Интуитивно.
+          Мы создали «Всё куплено» для себя — после 15 лет в HoReCa устали от ручного сравнения прайсов и неудобных площадок.
+          Сервис, которым <strong>сами хотели пользоваться</strong>: без сложных внедрений и обучения. Интуитивно.
         </p>
       </div>
     </div>
@@ -343,6 +320,12 @@
       </div>
     </div>
   </footer>
+
+  <!-- ==================== ЛАЙТБОКС ДЛЯ СКРИНШОТОВ ==================== -->
+  <div class="lightbox" id="lightbox" hidden>
+    <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Закрыть"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true"><line x1="4" y1="4" x2="20" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="20" y1="4" x2="4" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+    <img id="lightbox-img" src="" alt="">
+  </div>
 
   <script src="config.js"></script>
   <script src="script.js"></script>
