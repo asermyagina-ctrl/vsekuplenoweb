@@ -140,11 +140,8 @@ function renderPricing() {
           `
         : `<div class="plan-price">${plan.price.toLocaleString("ru-RU")} ₽<span>/${plan.period}</span></div>`;
 
-      const highlightBadge = plan.highlight ? `<p class="plan-highlight">${plan.highlight}</p>` : "";
-
       return `
         <div class="price-card${plan.highlight ? " price-card--highlight" : ""}" data-plan="${plan.id}">
-          ${highlightBadge}
           <h3 class="plan-name">${plan.name}</h3>
           ${priceHtml}
           <p class="plan-subtitle">${plan.subtitle}</p>

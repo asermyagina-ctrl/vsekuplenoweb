@@ -452,22 +452,6 @@ a { color: inherit; text-decoration: none; }
   0%, 100% { box-shadow: 0 12px 32px rgba(30, 107, 72, 0.16); }
   50% { box-shadow: 0 12px 40px rgba(30, 107, 72, 0.4); }
 }
-.plan-highlight {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #fff;
-  background: var(--accent);
-  padding: 4px 10px;
-  border-radius: 4px;
-  display: inline-block;
-  position: absolute;
-  top: -12px;
-  left: 24px;
-  margin: 0;
-}
 .plan-price .plan-price-old {
   color: var(--text-muted);
   text-decoration: line-through;
