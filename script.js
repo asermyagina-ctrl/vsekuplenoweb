@@ -218,6 +218,10 @@ function setupPaymentModal() {
     submitBtn.disabled = true;
     submitBtn.textContent = "Создаём платёж…";
 
+    // Открываем вкладку сразу (по клику), чтобы браузер не заблокировал её как всплывающее окно —
+    // адрес подставим, когда получим ссылку от n8n.
+    const paymentWindow = window.open("", "_blank");
+
     try {
       const response = await fetch(SITE_CONFIG.paymentWebhookUrl, {
         method: "POST",
@@ -230,11 +234,15 @@ function setupPaymentModal() {
       });
       const data = await response.json().catch(() => null);
       if (response.ok && data && data.confirmation_url) {
-        window.location.href = data.confirmation_url;
+        if (paymentWindow) paymentWindow.location.href = data.confirmation_url;
+        closePaymentModal();
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Перейти к оплате";
         return;
       }
       throw new Error("no confirmation_url");
     } catch (err) {
+      if (paymentWindow) paymentWindow.close();
       errorBox.textContent =
         "Не получилось создать платёж. Попробуйте ещё раз или напишите нам в Telegram.";
       errorBox.removeAttribute("hidden");
