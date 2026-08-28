@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Оплата тарифа — Всё куплено</title>
+  <meta name="description" content="Оплата тарифа «Всё куплено»: картой через ЮKassa или по счёту для юридического лица.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://vsekupleno.ru/pay.html">
+  <meta name="theme-color" content="#171A1C">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="pay-page-body">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        ВСЕ КУПЛЕНО
+      </a>
+      <nav class="header-nav">
+        <a href="index.html#gallery">Как это работает</a>
+        <a href="index.html#prices">Тарифы</a>
+        <a href="instruction.html">Инструкция пользователя</a>
+        <a href="index.html#footer">Контакты</a>
+      </nav>
+      <div class="header-cta">
+        <a href="#" class="btn btn-primary" data-role="telegram-link" target="_blank" rel="noopener"><span class="btn-text-full">Открыть бот в Telegram</span><span class="btn-text-short">Telegram</span></a>
+        <a href="#" class="btn btn-outline" data-role="max-link" target="_blank" rel="noopener"><span class="btn-text-full">Открыть бот в MAX</span><span class="btn-text-short">MAX</span></a>
+      </div>
+    </div>
+  </header>
+
+  <section class="pay-page">
+    <div class="container pay-page-inner">
+      <a href="index.html#prices" class="pay-back">← Все тарифы</a>
+
+      <div class="pay-summary">
+        <p class="pay-summary-plan" id="pay-plan-name">Тариф</p>
+        <p class="pay-summary-price" id="pay-plan-price">0 ₽</p>
+      </div>
+
+      <div class="pay-method-switch" role="group" aria-label="Способ оплаты">
+        <button type="button" class="pay-method-btn is-active" id="pay-method-card-btn">Оплата картой</button>
+        <button type="button" class="pay-method-btn" id="pay-method-invoice-btn">Счёт для юрлица</button>
+      </div>
+
+      <div class="pay-panel" id="pay-panel-card">
+        <form class="payment-form" id="payment-form">
+          <label for="payment-contact">Email или Telegram — чтобы мы активировали доступ после оплаты</label>
+          <input type="text" id="payment-contact" name="contact" placeholder="you@example.com или @username" required>
+          <p class="payment-form-error" id="payment-form-error" hidden></p>
+          <button type="submit" class="btn btn-primary" id="payment-form-submit">Перейти к оплате</button>
+        </form>
+        <p class="payment-form-note">После оплаты мы активируем доступ вручную и напишем вам — обычно в течение пары часов в рабочее время.</p>
+      </div>
+
+      <div class="pay-panel" id="pay-panel-invoice" hidden>
+        <form class="payment-form" id="invoice-form">
+          <label for="invoice-org">Название организации</label>
+          <input type="text" id="invoice-org" name="orgName" placeholder="ООО «Ромашка»" required>
+          <label for="invoice-inn">ИНН организации</label>
+          <input type="text" id="invoice-inn" name="inn" placeholder="10 или 12 цифр" inputmode="numeric" required>
+          <label for="invoice-email">Email, куда выслать счёт</label>
+          <input type="email" id="invoice-email" name="email" placeholder="you@company.ru" required>
+          <p class="payment-form-error" id="invoice-form-error" hidden></p>
+          <button type="submit" class="btn btn-primary" id="invoice-form-submit">Запросить счёт</button>
+        </form>
+        <p class="payment-form-note" id="invoice-form-success" hidden>Счёт сформирован — мы вышлем его на указанный email в течение рабочего дня. После оплаты по счёту активируем доступ вручную.</p>
+        <p class="payment-form-note">Мы вышлем счёт на указанный email с адреса info@vsekupleno.ru. После оплаты по счёту активируем доступ вручную.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer id="footer" class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <p class="footer-brand-text">Все куплено — умный помощник для закупок в HoReCa</p>
+        </div>
+        <div class="footer-col">
+          <h4>Реквизиты</h4>
+          <p>ИП Сермягина Анна Андреевна<br>
+          ИНН 665810153841<br>
+          ОГРНИП 326965800188247<br>
+          E-mail: <a href="mailto:info@vsekupleno.ru">info@vsekupleno.ru</a></p>
+        </div>
+        <div class="footer-col">
+          <h4>Документы</h4>
+          <p>
+            <a href="privacy.html">Политика обработки персональных данных</a><br>
+            <a href="oferta.html">Публичная оферта</a><br>
+            <a href="instruction.html">Инструкция для пользователей</a>
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Мессенджеры</h4>
+          <p>
+            Бот в Telegram — <a href="https://t.me/vsekuplenobot" target="_blank" rel="noopener">@vsekuplenobot</a><br>
+            ТГ канал — <a href="https://t.me/vsekuplenohoreca" target="_blank" rel="noopener">@vsekuplenohoreca</a><br>
+            Бот в MAX — <a href="#" data-role="max-link" target="_blank" rel="noopener">открыть</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button type="button" class="back-to-top" id="back-to-top" aria-label="Наверх">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+
+  <div class="cookie-banner" id="cookie-banner" hidden>
+    <p>Мы используем файлы cookie для улучшения работы сайта. Продолжая пользоваться сайтом, вы соглашаетесь с этим.</p>
+    <button type="button" class="cookie-accept" id="cookie-accept">Понятно</button>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

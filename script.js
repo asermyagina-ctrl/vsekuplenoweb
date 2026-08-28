@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupLightbox();
   setupBackToTop();
   setupCookieBanner();
-  setupPaymentModal();
+  setupPayPage();
   renderPricing();
 });
 
@@ -122,7 +122,7 @@ function renderPricing() {
 
       const actionsHtml = SITE_CONFIG.paymentsEnabled
         ? `
-          <button class="btn btn-primary" data-action="buy" data-plan="${plan.id}">Купить</button>
+          <a class="btn btn-primary" href="pay.html?plan=${plan.id}&period=${billingPeriod}">Купить</a>
         `
         : `
           <a class="btn btn-telegram" href="${SITE_CONFIG.telegramBotUrl}" target="_blank" rel="noopener">${ICON_SEND}Открыть в Telegram</a>
@@ -151,176 +151,109 @@ function renderPricing() {
       `;
     })
     .join("");
-
-  if (SITE_CONFIG.paymentsEnabled) {
-    grid.querySelectorAll('[data-action="buy"]').forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const plan = SITE_CONFIG.plans.find((p) => p.id === btn.dataset.plan);
-        if (plan) openPaymentModal(plan);
-      });
-    });
-  }
 }
 
-let activePaymentPlan = null;
+function setupPayPage() {
+  const summaryPlan = document.getElementById("pay-plan-name");
+  const summaryPrice = document.getElementById("pay-plan-price");
+  if (!summaryPlan || !summaryPrice) return; // не страница pay.html
 
-function openPaymentModal(plan) {
-  const modal = document.getElementById("payment-modal");
-  const planLabel = document.getElementById("payment-modal-plan");
-  const priceLabel = document.getElementById("payment-modal-price");
-  const errorBox = document.getElementById("payment-form-error");
-  const input = document.getElementById("payment-contact");
-  if (!modal || !planLabel || !priceLabel) return;
+  const params = new URLSearchParams(window.location.search);
+  const planId = params.get("plan");
+  const period = params.get("period") === "year" ? "year" : "month";
+  const plan = SITE_CONFIG.plans.find((p) => p.id === planId) || SITE_CONFIG.plans[0];
 
-  activePaymentPlan = plan;
-  planLabel.textContent = `Тариф «${plan.name}»`;
-  priceLabel.textContent =
-    billingPeriod === "year" && plan.priceYearly
+  summaryPlan.textContent = `Тариф «${plan.name}»`;
+  summaryPrice.textContent =
+    period === "year" && plan.priceYearly
       ? `${plan.priceYearly.toLocaleString("ru-RU")} ₽/год`
       : `${plan.price.toLocaleString("ru-RU")} ₽/месяц`;
-  if (errorBox) errorBox.setAttribute("hidden", "");
-  if (input) input.value = "";
-  showCardForm();
-  modal.removeAttribute("hidden");
-  if (input) input.focus();
-}
 
-function showCardForm() {
-  document.getElementById("payment-form").removeAttribute("hidden");
-  document.getElementById("payment-form-note").removeAttribute("hidden");
-  document.getElementById("payment-modal-to-invoice").removeAttribute("hidden");
-  document.getElementById("invoice-form").setAttribute("hidden", "");
-  document.getElementById("invoice-form-note").setAttribute("hidden", "");
-  document.getElementById("payment-modal-to-card").setAttribute("hidden", "");
-  document.getElementById("invoice-form-error").setAttribute("hidden", "");
-}
+  const cardBtn = document.getElementById("pay-method-card-btn");
+  const invoiceBtn = document.getElementById("pay-method-invoice-btn");
+  const cardPanel = document.getElementById("pay-panel-card");
+  const invoicePanel = document.getElementById("pay-panel-invoice");
 
-function showInvoiceForm() {
-  document.getElementById("payment-form").setAttribute("hidden", "");
-  document.getElementById("payment-form-note").setAttribute("hidden", "");
-  document.getElementById("payment-modal-to-invoice").setAttribute("hidden", "");
-  document.getElementById("invoice-form").removeAttribute("hidden");
-  document.getElementById("invoice-form-note").removeAttribute("hidden");
-  document.getElementById("payment-modal-to-card").removeAttribute("hidden");
-  document.getElementById("payment-form-error").setAttribute("hidden", "");
-}
-
-function closePaymentModal() {
-  const modal = document.getElementById("payment-modal");
-  if (!modal) return;
-  modal.setAttribute("hidden", "");
-  activePaymentPlan = null;
-}
-
-function setupPaymentModal() {
-  const modal = document.getElementById("payment-modal");
-  const closeBtn = document.getElementById("payment-modal-close");
-  const form = document.getElementById("payment-form");
-  const input = document.getElementById("payment-contact");
-  const errorBox = document.getElementById("payment-form-error");
-  const submitBtn = document.getElementById("payment-form-submit");
-  const invoiceForm = document.getElementById("invoice-form");
-  const invoiceErrorBox = document.getElementById("invoice-form-error");
-  const invoiceSubmitBtn = document.getElementById("invoice-form-submit");
-  if (!modal || !form) return;
-
-  closeBtn.addEventListener("click", closePaymentModal);
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) closePaymentModal();
+  cardBtn.addEventListener("click", () => {
+    cardBtn.classList.add("is-active");
+    invoiceBtn.classList.remove("is-active");
+    cardPanel.removeAttribute("hidden");
+    invoicePanel.setAttribute("hidden", "");
   });
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !modal.hasAttribute("hidden")) closePaymentModal();
+  invoiceBtn.addEventListener("click", () => {
+    invoiceBtn.classList.add("is-active");
+    cardBtn.classList.remove("is-active");
+    invoicePanel.removeAttribute("hidden");
+    cardPanel.setAttribute("hidden", "");
   });
 
-  document.getElementById("payment-modal-to-invoice").addEventListener("click", showInvoiceForm);
-  document.getElementById("payment-modal-to-card").addEventListener("click", showCardForm);
+  const paymentForm = document.getElementById("payment-form");
+  const paymentInput = document.getElementById("payment-contact");
+  const paymentError = document.getElementById("payment-form-error");
+  const paymentSubmit = document.getElementById("payment-form-submit");
 
-  form.addEventListener("submit", async (e) => {
+  paymentForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-    if (!activePaymentPlan) return;
-    const contact = input.value.trim();
+    const contact = paymentInput.value.trim();
     if (!contact) return;
 
-    errorBox.setAttribute("hidden", "");
-    submitBtn.disabled = true;
-    submitBtn.textContent = "Создаём платёж…";
-
-    // Открываем вкладку сразу (по клику), чтобы браузер не заблокировал её как всплывающее окно —
-    // адрес подставим, когда получим ссылку от n8n.
-    const paymentWindow = window.open("", "_blank");
+    paymentError.setAttribute("hidden", "");
+    paymentSubmit.disabled = true;
+    paymentSubmit.textContent = "Создаём платёж…";
 
     try {
       const response = await fetch(SITE_CONFIG.paymentWebhookUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          planId: activePaymentPlan.id,
-          period: billingPeriod,
-          contact: contact,
-        }),
+        body: JSON.stringify({ planId: plan.id, period: period, contact: contact }),
       });
       const data = await response.json().catch(() => null);
       if (response.ok && data && data.confirmation_url) {
-        if (paymentWindow) paymentWindow.location.href = data.confirmation_url;
-        closePaymentModal();
-        submitBtn.disabled = false;
-        submitBtn.textContent = "Перейти к оплате";
+        // Переходим в этой же вкладке — надёжнее всплывающего окна на мобильных браузерах.
+        window.location.href = data.confirmation_url;
         return;
       }
       throw new Error("no confirmation_url");
     } catch (err) {
-      if (paymentWindow) paymentWindow.close();
-      errorBox.textContent =
+      paymentError.textContent =
         "Не получилось создать платёж. Попробуйте ещё раз или напишите нам в Telegram.";
-      errorBox.removeAttribute("hidden");
-      submitBtn.disabled = false;
-      submitBtn.textContent = "Перейти к оплате";
+      paymentError.removeAttribute("hidden");
+      paymentSubmit.disabled = false;
+      paymentSubmit.textContent = "Перейти к оплате";
     }
   });
 
+  const invoiceForm = document.getElementById("invoice-form");
+  const invoiceError = document.getElementById("invoice-form-error");
+  const invoiceSubmit = document.getElementById("invoice-form-submit");
+  const invoiceSuccess = document.getElementById("invoice-form-success");
+
   invoiceForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-    if (!activePaymentPlan) return;
     const orgName = document.getElementById("invoice-org").value.trim();
     const inn = document.getElementById("invoice-inn").value.trim();
     const email = document.getElementById("invoice-email").value.trim();
     if (!orgName || !inn || !email) return;
 
-    invoiceErrorBox.setAttribute("hidden", "");
-    invoiceSubmitBtn.disabled = true;
-    invoiceSubmitBtn.textContent = "Готовим счёт…";
+    invoiceError.setAttribute("hidden", "");
+    invoiceSubmit.disabled = true;
+    invoiceSubmit.textContent = "Отправляем запрос…";
 
     try {
       const response = await fetch(SITE_CONFIG.invoiceWebhookUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          planId: activePaymentPlan.id,
-          period: billingPeriod,
-          orgName: orgName,
-          inn: inn,
-          email: email,
-        }),
+        body: JSON.stringify({ planId: plan.id, period: period, orgName: orgName, inn: inn, email: email }),
       });
       if (!response.ok) throw new Error("invoice request failed");
-      const blob = await response.blob();
-      const downloadUrl = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = downloadUrl;
-      link.download = `Schet_${activePaymentPlan.name}.pdf`;
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-      URL.revokeObjectURL(downloadUrl);
-      closePaymentModal();
-      invoiceSubmitBtn.disabled = false;
-      invoiceSubmitBtn.textContent = "Получить счёт (PDF)";
+      invoiceForm.setAttribute("hidden", "");
+      invoiceSuccess.removeAttribute("hidden");
     } catch (err) {
-      invoiceErrorBox.textContent =
-        "Не получилось создать счёт. Попробуйте ещё раз или напишите нам в Telegram.";
-      invoiceErrorBox.removeAttribute("hidden");
-      invoiceSubmitBtn.disabled = false;
-      invoiceSubmitBtn.textContent = "Получить счёт (PDF)";
+      invoiceError.textContent =
+        "Не получилось отправить запрос. Попробуйте ещё раз или напишите нам в Telegram.";
+      invoiceError.removeAttribute("hidden");
+      invoiceSubmit.disabled = false;
+      invoiceSubmit.textContent = "Запросить счёт";
     }
   });
 }
