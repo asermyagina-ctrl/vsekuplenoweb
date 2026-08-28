@@ -187,42 +187,6 @@ function setupPayPage() {
     cardPanel.setAttribute("hidden", "");
   });
 
-  const paymentForm = document.getElementById("payment-form");
-  const paymentInput = document.getElementById("payment-contact");
-  const paymentError = document.getElementById("payment-form-error");
-  const paymentSubmit = document.getElementById("payment-form-submit");
-
-  paymentForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const contact = paymentInput.value.trim();
-    if (!contact) return;
-
-    paymentError.setAttribute("hidden", "");
-    paymentSubmit.disabled = true;
-    paymentSubmit.textContent = "Создаём платёж…";
-
-    try {
-      const response = await fetch(SITE_CONFIG.paymentWebhookUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ planId: plan.id, period: period, contact: contact }),
-      });
-      const data = await response.json().catch(() => null);
-      if (response.ok && data && data.confirmation_url) {
-        // Переходим в этой же вкладке — надёжнее всплывающего окна на мобильных браузерах.
-        window.location.href = data.confirmation_url;
-        return;
-      }
-      throw new Error("no confirmation_url");
-    } catch (err) {
-      paymentError.textContent =
-        "Не получилось создать платёж. Попробуйте ещё раз или напишите нам в Telegram.";
-      paymentError.removeAttribute("hidden");
-      paymentSubmit.disabled = false;
-      paymentSubmit.textContent = "Перейти к оплате";
-    }
-  });
-
   const invoiceForm = document.getElementById("invoice-form");
   const invoiceError = document.getElementById("invoice-form-error");
   const invoiceSubmit = document.getElementById("invoice-form-submit");

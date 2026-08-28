@@ -51,13 +51,14 @@
       </div>
 
       <div class="pay-panel" id="pay-panel-card">
-        <form class="payment-form" id="payment-form">
-          <label for="payment-contact">Email или Telegram — чтобы мы активировали доступ после оплаты</label>
-          <input type="text" id="payment-contact" name="contact" placeholder="you@example.com или @username" required>
-          <p class="payment-form-error" id="payment-form-error" hidden></p>
-          <button type="submit" class="btn btn-primary" id="payment-form-submit">Перейти к оплате</button>
-        </form>
-        <p class="payment-form-note">После оплаты мы активируем доступ вручную и напишем вам — обычно в течение пары часов в рабочее время.</p>
+        <p class="payment-form-note" style="margin-top: 0;">Оплата картой — прямо в боте: он привязывает платёж к вашему аккаунту и сразу активирует доступ.</p>
+        <ol class="pay-steps">
+          <li>Откройте бот в Telegram или MAX</li>
+          <li>Отправьте команду <code>/tarif</code></li>
+          <li>Выберите тариф и оплатите картой</li>
+        </ol>
+        <a href="#" class="btn btn-primary" data-role="telegram-link" target="_blank" rel="noopener">Открыть бот в Telegram</a>
+        <a href="#" class="btn btn-outline" data-role="max-link" target="_blank" rel="noopener" style="margin-top: 10px;">Открыть бот в MAX</a>
       </div>
 
       <div class="pay-panel" id="pay-panel-invoice" hidden>
