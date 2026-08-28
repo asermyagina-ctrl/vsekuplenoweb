@@ -51,7 +51,7 @@
       </div>
 
       <div class="pay-panel" id="pay-panel-card">
-        <p class="payment-form-note" style="margin-top: 0;">Оплата картой — прямо в боте: он привязывает платёж к вашему аккаунту и сразу активирует доступ.</p>
+        <p class="payment-form-note" style="margin-top: 0;">Оплата картой — прямо в боте: доступ активируется сразу после оплаты.</p>
         <ol class="pay-steps">
           <li>Откройте бот в Telegram или MAX</li>
           <li>Отправьте команду <code>/tarif</code></li>
@@ -64,16 +64,15 @@
       <div class="pay-panel" id="pay-panel-invoice" hidden>
         <form class="payment-form" id="invoice-form">
           <label for="invoice-org">Название организации</label>
-          <input type="text" id="invoice-org" name="orgName" placeholder="ООО «Ромашка»" required>
+          <input type="text" id="invoice-org" name="orgName" placeholder="введите наименование" required>
           <label for="invoice-inn">ИНН организации</label>
           <input type="text" id="invoice-inn" name="inn" placeholder="10 или 12 цифр" inputmode="numeric" required>
-          <label for="invoice-email">Email, куда выслать счёт</label>
+          <label for="invoice-email">Email для отправки счета</label>
           <input type="email" id="invoice-email" name="email" placeholder="you@company.ru" required>
           <p class="payment-form-error" id="invoice-form-error" hidden></p>
           <button type="submit" class="btn btn-primary" id="invoice-form-submit">Запросить счёт</button>
         </form>
-        <p class="payment-form-note" id="invoice-form-success" hidden>Счёт сформирован — мы вышлем его на указанный email в течение рабочего дня. После оплаты по счёту активируем доступ вручную.</p>
-        <p class="payment-form-note">Мы вышлем счёт на указанный email с адреса info@vsekupleno.ru. После оплаты по счёту активируем доступ вручную.</p>
+        <p class="payment-form-note" id="invoice-form-success" hidden>Счёт сформирован — мы вышлем его на указанный email в течение рабочего дня. После оплаты по счёту активируем доступ. </p>
       </div>
     </div>
   </section>
